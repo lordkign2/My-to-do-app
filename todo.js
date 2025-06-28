@@ -104,10 +104,10 @@ function renderTasks(flashIndex = null) {
           </div>
           <div class="d-flex align-items-center ms-2">
             <button class="icon-btn tooltip-container" onclick="editTask(${realIndex})" aria-label="Edit Task"><br>
-            <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0l-1.83 1.83 3.75 3.75 1.84-1.82z"/></svg>
+            ✏️
               <span class="tooltip-text">Edit</span>
             </button>
-            <button class="icon-btn tooltip-container" onclick="deleteTask(${realIndex})" aria-label="Delete Task">
+            <button class="icon-btn tooltip-container" onclick="deleteTask(${realIndex})" aria-label="Delete Task">✖
               <svg viewBox="0 0 24 24"><path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-4.5l-1-1z"/></svg>
               <span class="tooltip-text">Delete</span>
             </button>
