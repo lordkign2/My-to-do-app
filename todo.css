@@ -1,0 +1,205 @@
+:root {
+    --bg: linear-gradient(to right, #74ebd5, #ACB6E5);
+    --card-bg: rgba(255, 255, 255, 0.2);
+    --text-color: #222;
+    --border-color: rgba(255,255,255,0.2);
+    --tooltip-bg: rgba(0, 0, 0, 0.75);
+    --tooltip-color: #fff;
+  }
+
+  [data-theme="dark"] {
+    --bg: linear-gradient(to right, #1f1f1f, #2c3e50);
+    --card-bg: rgba(30, 30, 30, 0.6);
+    --text-color: #f5f5f5;
+    --border-color: rgba(255,255,255,0.1);
+    --tooltip-bg: rgba(255, 255, 255, 0.85);
+    --tooltip-color: #222;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text-color);
+    min-height: 100vh;
+    transition: background 0.5s ease, color 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transition: all 0.4s ease;
+  }
+
+  .group-header {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+
+  [data-theme="dark"] .group-header {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .task-done {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  .timestamp, .countdown {
+    font-size: 0.8rem;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .dark-toggle {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: inherit;
+  }
+
+  /* Tooltip animations */
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip-container .tooltip-text {
+    visibility: hidden;
+    width: max-content;
+    max-width: 150px;
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-color);
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 100;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-size: 0.75rem;
+    pointer-events: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .tooltip-container .tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--tooltip-bg) transparent transparent transparent;
+  }
+
+  .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+
+  /* Icon button style + pulse animation on hover */
+  button.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 4px 6px;
+    margin-left: 6px;
+    position: relative;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  button.icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    animation: pulse 1.2s infinite ease-in-out;
+    color: var(--text-color);
+  }
+
+  button.icon-btn:active {
+    transform: scale(0.9);
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 0 transparent);
+    }
+    50% {
+      transform: scale(1.15);
+      filter: drop-shadow(0 0 6px rgba(0, 255, 0, 0.6));
+    }
+  }
+
+  /* Task completion highlight */
+  .task-flash {
+    animation: flashGreen 0.8s ease forwards;
+  }
+
+  @keyframes flashGreen {
+    0% {
+      background-color: #b4f3b4;
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  /* Button press effect */
+  button.btn-primary {
+    transition: transform 0.1s ease;
+  }
+
+  button.btn-primary:active {
+    transform: scale(0.95);
+  }
+
+  /* Priority badges */
+  .badge-priority {
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.3em 0.6em;
+    border-radius: 12px;
+    user-select: none;
+    margin-right: 8px;
+  }
+  .priority-high {
+    background-color: #ff5c5c;
+    color: #fff;
+  }
+  .priority-medium {
+    background-color: #ffae42;
+    color: #fff;
+  }
+  .priority-low {
+    background-color: #6cc24a;
+    color: #fff;
+  }
