@@ -108,7 +108,7 @@ function renderTasks(flashIndex = null) {
               <span class="tooltip-text">Edit</span>
             </button>
             <button class="icon-btn tooltip-container" onclick="deleteTask(${realIndex})" aria-label="Delete Task"><br>
-            ✖
+            <span style="color: red;">✖</span>
               <span class="tooltip-text">Delete</span>
             </button>
           </div>
